@@ -1,0 +1,8 @@
+2025-03-14 14:34:14.477 -04:00 [INF] SpeedProcessing.RDDSapService Start!
+2025-03-14 14:34:16.294 -04:00 [INF] Application Stop!
+2025-03-14 15:00:27.867 -04:00 [INF] SpeedProcessing.RDDSapService Start!
+2025-03-14 15:00:33.121 -04:00 [INF] EP9M SAP API call 3 seconds delayed : Material EP9M does not exist in SAP. . Count : 0
+2025-03-14 15:02:23.513 -04:00 [INF] SpeedProcessing.RDDSapService Start!
+2025-03-14 15:02:26.357 -04:00 [INF] EP9M SAP API call 3 seconds delayed : Material EP9M does not exist in SAP. . Count : 0
+2025-03-14 15:02:56.754 -04:00 [INF] Update SQL Server SpeedProcesssing Tables IsSubmitted falag to 1 : EP9M ; G865
+2025-03-14 15:02:56.756 -04:00 [INF] Application Stop!

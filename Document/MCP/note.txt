@@ -1,0 +1,7 @@
+markdown-pdf *.md
+
+mdankideck input output -- convert md file in input folder to .apkg file in output 
+
+
+to word
+https://cloudconvert.com/md-to-docx 

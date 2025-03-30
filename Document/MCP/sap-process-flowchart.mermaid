@@ -1,0 +1,34 @@
+flowchart TD
+    Start([Start Application]) --> LogInit[Initialize Logging]
+    LogInit --> GetTasks[Retrieve Unprocessed TSDR Tasks]
+    GetTasks --> TaskLoop{Any Tasks To Process?}
+    
+    TaskLoop -->|No| EndProcess([End Process])
+    TaskLoop -->|Yes| ProcessAS400[Process Data in AS400]
+    
+    ProcessAS400 --> AS400Check{AS400 Process Successful?}
+    AS400Check -->|No| RollbackAS400[Rollback AS400 Changes]
+    RollbackAS400 --> NotifyFailure[Notify Team of Failure]
+    NotifyFailure --> NextTask[Move to Next Task]
+    
+    AS400Check -->|Yes| ProcessSAP[Process Data in SAP]
+    ProcessSAP --> SAPCheck{SAP Process Successful?}
+    
+    SAPCheck -->|No| RollbackSAP[Rollback SAP Changes]
+    RollbackSAP --> RollbackAS400_2[Rollback AS400 Changes]
+    RollbackAS400_2 --> NotifyFailure
+    
+    SAPCheck -->|Yes| ProcessSQL[Process SQL Data]
+    ProcessSQL --> SQLCheck{SQL Process Successful?}
+    
+    SQLCheck -->|No| RollbackSQL[Rollback SQL Changes]
+    RollbackSQL --> RollbackSAP_2[Rollback SAP Changes]
+    RollbackSAP_2 --> RollbackAS400_3[Rollback AS400 Changes]
+    RollbackAS400_3 --> NotifyFailure
+    
+    SQLCheck -->|Yes| MoveAS400Data[Move AS400 Data from Staging to Production]
+    MoveAS400Data --> UpdateTaskStatus[Update Task Status as Processed]
+    UpdateTaskStatus --> NotifySuccess[Notify Team of Success]
+    NotifySuccess --> NextTask
+    
+    NextTask --> TaskLoop

@@ -1,0 +1,19 @@
+﻿sequenceDiagram
+    title SAP Submission Flow
+    participant User
+    participant SpeedProcessing
+    participant SQL Server
+    
+    participant Backend Scheule Job 
+    participant SAP API
+    participant EDI Process Folder
+
+    User->>SpeedProcessing: Submit Changes
+    SpeedProcessing->>SQL Server: Save Changes
+    SQL Server->>Backend Scheule Job: Changes Available
+    Backend Scheule Job->>SAP API: Submit Changes
+    SAP API-->>Backend Scheule Job: Response with Data
+    Backend Scheule Job->>SQL Server: Store Additional Entries
+    Backend Scheule Job->>EDI Process Folder: Generate Output Files
+
+   

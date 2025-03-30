@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SpeedProcessing.BackEndService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ENVIRONMENT": "development"
+      }
+    }
+  }
+}

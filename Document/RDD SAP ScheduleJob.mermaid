@@ -1,0 +1,24 @@
+﻿sequenceDiagram
+    participant SQL as SQL Server
+    participant SAP as SAP API
+    participant FS as EDI Processed Folder
+    
+    SQL->>SQL: Get unprocessed TSDR SAP ADD and Delete list\nfrom SpeedProcessing Tables (IsSubmitted flag = 0)
+    SQL->>SQL: [dbo].[SpeedProcessing_SAPAddData] (Add table)
+    SQL->>SQL: [dbo].[SpeedProcessing_SAPDelData] (Delete table)
+    
+    Note over SQL: Create result pair of Addlist and Dellist by TSDR, ProductCode
+    
+    loop For each pair in the result list
+        SQL->>SAP: Call SAP API to modify Dellist
+    end
+    
+    loop For each pair in the result list
+        FS->>FS: Create package-A file
+        FS->>FS: Create package-D file
+        FS->>FS: Save files to EDIProcessed Folder
+    end
+    
+    SQL->>SQL: Update SpeedProcessing Tables IsSubmitted flag to 1
+
+   

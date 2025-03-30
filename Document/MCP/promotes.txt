@@ -1,0 +1,16 @@
+1. access source code folder:
+
+please check this folder: C:\Users\Dayang.Sun\Downloads\SpeedProcessing.RDDSAPService , and summarize what it is ?
+
+2. flow chart for the application
+
+please create one mermaid flow chart for the application 
+
+3. document html 
+
+please create one html file as  high level design & archiecture document for this project
+
+
+
+4. deployment html
+please create one deployment html file  named  deployment.html with the following items: Deployment Server : ColWebPrd02, Folder: C:\STJob\RDDSAPJob, Type: Schedule Job, Schedule : Every 5 minutes between: 5:00 AM to 5:00PM .

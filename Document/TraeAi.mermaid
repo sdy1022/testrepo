@@ -1,0 +1,8 @@
+﻿graph TD
+    A[Input Request] --> B[ProcessObjectEntity]
+    B --> C[Add Operations]
+    B --> D[Delete Operations]
+    C --> E[SpeedProcessingSAPAddData]
+    D --> F[SpeedProcessingSAPDelData]
+    E --> G[RDDSAPResult]
+    F --> G
